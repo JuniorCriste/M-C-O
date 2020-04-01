@@ -1,0 +1,106 @@
+unit Unit4;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, jpeg, ExtCtrls, pngimage, filectrl, shellapi, pngextra;
+
+type
+  TForm4 = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    OpenDialog1: TOpenDialog;
+    SaveDialog1: TSaveDialog;
+    PNGButton1: TPNGButton;
+    PNGButton2: TPNGButton;
+    PNGButton3: TPNGButton;
+    procedure PNGButton1Click(Sender: TObject);
+    procedure PNGButton2Click(Sender: TObject);
+    procedure PNGButton3Click(Sender: TObject);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure FormShow(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm4.PNGButton1Click(Sender: TObject);
+var
+path: string;
+begin
+
+
+if opendialog1.Execute then
+edit1.Text:= opendialog1.FileName;
+end;
+
+procedure TForm4.PNGButton2Click(Sender: TObject);
+begin
+showmessage('É indicado que você salve em outo HD, ou em uma unidade de disco removível!');
+if savedialog1.Execute then
+edit2.Text:= savedialog1.filename;
+end;
+
+procedure TForm4.PNGButton3Click(Sender: TObject);
+var
+dados:tshfileopstruct;
+begin
+fillchar(dados,sizeof(dados), 0);
+with dados do
+begin
+wfunc:=fo_copy;
+pfrom:=pchar(edit1.Text);
+pto:= pchar(edit2.Text);
+fflags:=fof_allowundo;
+end;
+shfileoperation(dados);
+
+end;
+
+procedure TForm4.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+const
+  sc_dragmove=$F012;
+  begin
+ if button=mbleft then
+
+ begin
+ releasecapture;
+form4.Perform(wm_syscommand,sc_dragmove,0);
+
+end;
+end;
+
+procedure TForm4.FormShow(Sender: TObject);
+
+var
+region: hrgn;
+begin
+
+region:=createroundrectrgn(0,0,width,height,10,10);
+setwindowrgn(handle,region,true);
+end;
+
+
+procedure TForm4.Label1Click(Sender: TObject);
+begin
+form4.Close;
+end;
+
+end.

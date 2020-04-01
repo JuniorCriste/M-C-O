@@ -1,0 +1,29 @@
+unit Unit8;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, OleCtrls, SHDocVw_EWB, EwbCore, EmbeddedWB, jpeg, ExtCtrls,
+  StdCtrls;
+
+type
+  TForm8 = class(TForm)
+    titulo: TLabel;
+    Image1: TImage;
+    Label1: TLabel;
+    EmbeddedWB1: TEmbeddedWB;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form8: TForm8;
+
+implementation
+
+{$R *.dfm}
+
+end.
