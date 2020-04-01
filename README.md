@@ -3,7 +3,7 @@
 ##### por Junior Criste
 ##### Feito em 2014
 
-### Mais dessa coleção "Amador com Delphi 2014" 
+### Mais dessa coleção "Amador com Delphi 7" 
 <a href="https://github.com/JuniorCriste/M-C-O">Mini Cool Operacional</a><br />
 <a href="https://github.com/JuniorCriste/Stop-Processos">Stop Processos</a><br />
 <a href="https://github.com/JuniorCriste/Xo-Atalho">Xô Atalho</a><br />
